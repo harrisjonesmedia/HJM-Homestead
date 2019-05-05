@@ -1,0 +1,46 @@
+---
+name: "hjm-homestead"
+ip: "192.168.10.30"
+memory: 8192
+cpus: 4
+provider: virtualbox
+
+authorize: ~/.ssh/id_rsa.pub
+
+keys:
+    - ~/.ssh/id_rsa
+
+folders:
+    - map: ~/Projects/HJM/development
+      to: /home/vagrant/projects
+
+sites:
+    - map: l.clearvisionmastermind.com
+      to: /home/vagrant/projects/clearvisionmastermind.com/htdocs
+    - map: l.harrisjonesmedia.com
+      to: /home/vagrant/projects/harrisjonesmedia.com/htdocs
+    - map: l.locklearportraiture.com
+      to: /home/vagrant/projects/locklearportraiture.com/htdocs
+      php: "7.2"
+
+databases:
+    - l_clearvisionmastermind_com
+    - l_harrisjonesmedia_com
+    - l_locklearportraiture_com
+
+variables:
+    - key: APP_ENV
+      value: local
+
+# blackfire:
+#     - id: foo
+#       token: bar
+#       client-id: foo
+#       client-token: bar
+
+# ports:
+#     - send: 50000
+#       to: 5000
+#     - send: 7777
+#       to: 777
+#       protocol: udp
